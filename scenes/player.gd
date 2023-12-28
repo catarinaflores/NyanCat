@@ -3,10 +3,10 @@ extends CharacterBody2D
 @onready var animated_sprite_2d = %AnimatedSprite2D
 
 @export var gravity = 1000
-@export var fly_force = 300
+@export var fly_force = -300
 
 
-const START_POS = Vector2(100, 500)
+const START_POS = Vector2(200, 500)
 
 var max_speed = 400
 var cat_rotation = 2
@@ -19,7 +19,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("fly"):
 		fly()
 	
-	velocity.y += gravity + delta
+	velocity.y += gravity * delta
 	if velocity.y > max_speed:
 		velocity.y = max_speed
 	
