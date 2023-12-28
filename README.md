@@ -1,2 +1,0 @@
-# NyanCat
- flappy bird clone
