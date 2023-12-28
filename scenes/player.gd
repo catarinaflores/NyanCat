@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var fly_force = 300
 
 
-const START_POS = Vector2(100, 400)
+const START_POS = Vector2(100, 500)
 
 var max_speed = 400
 var cat_rotation = 2

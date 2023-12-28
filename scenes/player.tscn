@@ -19,19 +19,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mu4dd"]
-size = Vector2(455.266, 286.377)
+size = Vector2(536.039, 330.435)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_68o02")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, 1)
-scale = Vector2(0.132783, 0.128783)
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(0.155931, 0.151234)
 sprite_frames = SubResource("SpriteFrames_v5ufx")
 animation = &"cat"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0.5)
+position = Vector2(-1.5, -0.5)
 scale = Vector2(0.136184, 0.136184)
 shape = SubResource("RectangleShape2D_mu4dd")
