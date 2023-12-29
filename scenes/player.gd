@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 const START_POS = Vector2(200, 500)
 
-var max_speed = 400
+var falling_speed = 400
 var cat_rotation = 2
 
 func _ready() -> void:
@@ -20,8 +20,8 @@ func _physics_process(delta):
 		fly()
 	
 	velocity.y += gravity * delta
-	if velocity.y > max_speed:
-		velocity.y = max_speed
+	if velocity.y > falling_speed:
+		velocity.y = falling_speed
 	
 	move_and_collide(velocity * delta)
 	
@@ -41,7 +41,12 @@ func fly() -> void:
 
 
 func rotate_cat() -> void:
-	if velocity.y > 0 and rad_to_deg(rotation) > 90:
+	if velocity.y > 0 and rad_to_deg(rotation) < 90:
 		rotation += cat_rotation * deg_to_rad(1)
 	elif velocity.y < 0 and rad_to_deg(rotation) > -30:
 		rotation -= cat_rotation * deg_to_rad(1)
+
+
+func stop() -> void:
+	gravity = 0
+	velocity = Vector2.ZERO
