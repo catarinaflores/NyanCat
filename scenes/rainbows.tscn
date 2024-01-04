@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://mah7o2s1apb8"]
+
+[ext_resource type="Texture2D" uid="uid://chj5ak2k3bk0q" path="res://assets/obstacle.png" id="1_0kt8v"]
+
+[node name="Rainbows" type="Node2D"]
+
+[node name="TopRainbow" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="TopRainbow"]
+position = Vector2(0, -300)
+rotation = 1.5708
+texture = ExtResource("1_0kt8v")
+
+[node name="BottomRainbow" type="Area2D" parent="."]
