@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://mah7o2s1apb8"]
+[gd_scene load_steps=5 format=3 uid="uid://mah7o2s1apb8"]
 
 [ext_resource type="Texture2D" uid="uid://chj5ak2k3bk0q" path="res://assets/obstacle.png" id="1_0kt8v"]
+[ext_resource type="Script" path="res://scenes/rainbows.gd" id="1_ipsd3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ha34p"]
 size = Vector2(139, 588)
@@ -9,6 +10,7 @@ size = Vector2(139, 588)
 size = Vector2(139, 588)
 
 [node name="Rainbows" type="Node2D"]
+script = ExtResource("1_ipsd3")
 
 [node name="TopRainbow" type="Area2D" parent="."]
 
@@ -31,3 +33,6 @@ texture = ExtResource("1_0kt8v")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomRainbow"]
 position = Vector2(11.5, 450)
 shape = SubResource("RectangleShape2D_j8c7d")
+
+[connection signal="body_entered" from="TopRainbow" to="." method="_on_top_rainbow_body_entered"]
+[connection signal="body_entered" from="BottomRainbow" to="." method="_on_bottom_rainbow_body_entered"]
