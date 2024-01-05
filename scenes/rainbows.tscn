@@ -1,14 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://mah7o2s1apb8"]
+[gd_scene load_steps=4 format=3 uid="uid://mah7o2s1apb8"]
 
 [ext_resource type="Texture2D" uid="uid://chj5ak2k3bk0q" path="res://assets/obstacle.png" id="1_0kt8v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ha34p"]
+size = Vector2(139, 588)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8c7d"]
+size = Vector2(139, 588)
 
 [node name="Rainbows" type="Node2D"]
 
 [node name="TopRainbow" type="Area2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="TopRainbow"]
-position = Vector2(0, -300)
+position = Vector2(0, -450)
 rotation = 1.5708
 texture = ExtResource("1_0kt8v")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopRainbow"]
+position = Vector2(11.5, -450)
+shape = SubResource("RectangleShape2D_ha34p")
+
 [node name="BottomRainbow" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="BottomRainbow"]
+position = Vector2(0, 450)
+rotation = 1.5708
+texture = ExtResource("1_0kt8v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomRainbow"]
+position = Vector2(11.5, 450)
+shape = SubResource("RectangleShape2D_j8c7d")

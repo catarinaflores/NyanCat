@@ -21,7 +21,7 @@ GameManager="*res://game_manager.gd"
 
 [display]
 
-window/size/viewport_width=750
+window/size/viewport_width=800
 window/size/viewport_height=1000
 window/stretch/mode="viewport"
 
