@@ -6,9 +6,11 @@ var game_running: bool
 var game_over: bool
 var screen_size: Vector2
 var rainbow_row: Array
+const SCROLL_SPEED: int = 4
 const RAINBOW_DELAY: int = 100
 const RAINBOW_RANGE: int = 200
 @onready var cat = %Player
+@onready var rainbow_timer = %RainbowTimer
 
 
 
@@ -17,6 +19,10 @@ func _ready():
 	screen_size = get_window().size
 	new_game()
 
+func _process(delta):
+	for obstacle in rainbow_row:
+		obstacle.position.x -= SCROLL_SPEED
+
 func new_game() -> void:
 	game_running = false
 	game_over = false
@@ -24,6 +30,7 @@ func new_game() -> void:
 	GameManager.score = 0
 	generate_rainbows()
 	cat.reset()
+	rainbow_timer.start()
 
 func _input(event) -> void:
 	if game_over== false:
@@ -43,6 +50,16 @@ func generate_rainbows() -> void:
 	obstacle.hit.connect(cat_hit)
 	add_child(obstacle)
 	rainbow_row.append(obstacle)
+
+func top_collision() -> void:
+	if cat.position.y < 0:
+		stop_game()
+
+
+func stop_game() -> void:
+	rainbow_timer.stop()
+	game_over = true
+	game_running = false
 
 
 func cat_hit() -> void:
