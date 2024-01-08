@@ -32,12 +32,6 @@ func new_game() -> void:
 	cat.reset()
 	rainbow_timer.start()
 
-func _input(event) -> void:
-	if game_over== false:
-		if Input.is_action_just_pressed("fly"):
-			if game_running == false:
-				game_running = true
-
 
 func _on_rainbow_timer_timeout():
 	generate_rainbows()
@@ -50,10 +44,9 @@ func generate_rainbows() -> void:
 	obstacle.hit.connect(cat_hit)
 	add_child(obstacle)
 	rainbow_row.append(obstacle)
+	if obstacle.position.x < 0:
+		queue_free()
 
-func top_collision() -> void:
-	if cat.position.y < 0:
-		stop_game()
 
 
 func stop_game() -> void:
@@ -63,4 +56,4 @@ func stop_game() -> void:
 
 
 func cat_hit() -> void:
-	pass
+	stop_game()

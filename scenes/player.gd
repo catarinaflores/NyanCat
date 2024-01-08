@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 
 const START_POS = Vector2(200, 500)
-
+var cat_falling: bool = false
 var falling_speed = 400
 var cat_rotation = 2
 
@@ -16,16 +16,21 @@ func _ready() -> void:
 
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("fly"):
-		fly()
-	
-	velocity.y += gravity * delta
-	if velocity.y > falling_speed:
-		velocity.y = falling_speed
-	
-	move_and_collide(velocity * delta)
-	
-	rotate_cat()
+	top_collision()
+	if cat_falling == false:
+		if Input.is_action_just_pressed("fly"):
+			fly()
+		
+		velocity.y += gravity * delta
+		if velocity.y > falling_speed:
+			velocity.y = falling_speed
+		
+		move_and_collide(velocity * delta)
+		
+		rotate_cat()
+	else:
+		stop(delta)
+
 
 
 func reset() -> void:
@@ -47,6 +52,14 @@ func rotate_cat() -> void:
 		rotation -= cat_rotation * deg_to_rad(1)
 
 
-func stop() -> void:
-	gravity = 0
-	velocity = Vector2.ZERO
+func stop(delta) -> void:
+	velocity.y += gravity * delta
+	move_and_collide(velocity * delta)
+	rotate_cat()
+	set_process_input(false)
+
+
+func top_collision() -> void:
+	if self.position.y < 0:
+		cat_falling = true
+		
