@@ -1,9 +1,11 @@
 extends Node
 
+@export var rainbows_scene : PackedScene
+
 var game_running: bool
 var game_over: bool
 var screen_size: Vector2
-var rainbows: Array
+var rainbow_row: Array
 const RAINBOW_DELAY: int = 100
 const RAINBOW_RANGE: int = 200
 @onready var cat = %Player
@@ -18,7 +20,9 @@ func _ready():
 func new_game() -> void:
 	game_running = false
 	game_over = false
+	rainbow_row.clear()
 	GameManager.score = 0
+	generate_rainbows()
 	cat.reset()
 
 func _input(event) -> void:
@@ -28,7 +32,18 @@ func _input(event) -> void:
 				game_running = true
 
 
+func _on_rainbow_timer_timeout():
+	generate_rainbows()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+
+func generate_rainbows() -> void:
+	var obstacle = rainbows_scene.instantiate()
+	obstacle.position.x = screen_size.x + RAINBOW_DELAY
+	obstacle.position.y = screen_size.y / 2 + randi_range(-RAINBOW_RANGE, RAINBOW_RANGE)
+	obstacle.hit.connect(cat_hit)
+	add_child(obstacle)
+	rainbow_row.append(obstacle)
+
+
+func cat_hit() -> void:
 	pass
