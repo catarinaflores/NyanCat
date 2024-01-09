@@ -1,6 +1,7 @@
 extends Node
 
-@export var rainbows_scene : PackedScene
+@export var rainbows_scene: PackedScene
+@export var scroll_speed = 4 
 
 var game_running: bool
 var game_over: bool
@@ -9,6 +10,7 @@ var rainbow_row: Array
 const SCROLL_SPEED: int = 4
 const RAINBOW_DELAY: int = 100
 const RAINBOW_RANGE: int = 200
+var rainbow_scene = preload("res://scenes/rainbows.tscn")
 @onready var cat = %Player
 @onready var rainbow_timer = %RainbowTimer
 
@@ -19,14 +21,13 @@ func _ready():
 	screen_size = get_window().size
 	new_game()
 
-func _process(delta):
-	for obstacle in rainbow_row:
-		obstacle.position.x -= SCROLL_SPEED
+# func _process(delta):
+	# for obstacle in rainbow_row:
+		# obstacle.position.x -= SCROLL_SPEED
 
 func new_game() -> void:
 	game_running = false
 	game_over = false
-	rainbow_row.clear()
 	GameManager.score = 0
 	generate_rainbows()
 	cat.reset()
@@ -48,12 +49,12 @@ func generate_rainbows() -> void:
 		queue_free()
 
 
-
-func stop_game() -> void:
+func stop_game(delta) -> void:
 	rainbow_timer.stop()
+	cat.stop(delta)
 	game_over = true
 	game_running = false
 
 
-func cat_hit() -> void:
-	stop_game()
+func cat_hit(delta) -> void:
+	stop_game(delta)
