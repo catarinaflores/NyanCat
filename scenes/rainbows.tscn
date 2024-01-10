@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://scenes/rainbows.gd" id="1_ipsd3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ha34p"]
-size = Vector2(139, 588)
+size = Vector2(139, 764)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j8c7d"]
-size = Vector2(139, 588)
+size = Vector2(139, 883)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cridy"]
 size = Vector2(23, 379)
@@ -18,23 +18,25 @@ script = ExtResource("1_ipsd3")
 [node name="TopRainbow" type="Area2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="TopRainbow"]
-position = Vector2(0, -450)
+position = Vector2(0.000319279, -538.199)
 rotation = 1.5708
+scale = Vector2(1.3, 1)
 texture = ExtResource("1_0kt8v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopRainbow"]
-position = Vector2(11.5, -450)
+position = Vector2(11.5, -538)
 shape = SubResource("RectangleShape2D_ha34p")
 
 [node name="BottomRainbow" type="Area2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="BottomRainbow"]
-position = Vector2(0, 450)
+position = Vector2(-0.000533625, 597.411)
 rotation = 1.5708
+scale = Vector2(1.5014, 1)
 texture = ExtResource("1_0kt8v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomRainbow"]
-position = Vector2(11.5, 450)
+position = Vector2(11.5, 597.5)
 shape = SubResource("RectangleShape2D_j8c7d")
 
 [node name="ScoringArea" type="Area2D" parent="."]

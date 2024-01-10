@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 
 const START_POS = Vector2(200, 500)
-var cat_falling: bool = false
+
 var falling_speed = 400
 var cat_rotation = 2
 
@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _physics_process(delta):
 	top_collision()
-	if cat_falling == false:
+	if GameManager.cat_falling == false:
 		if Input.is_action_just_pressed("fly"):
 			fly()
 		
@@ -61,5 +61,6 @@ func stop(delta) -> void:
 
 func top_collision() -> void:
 	if self.position.y < 0:
-		cat_falling = true
+		GameManager.cat_falling = true
 		
+
