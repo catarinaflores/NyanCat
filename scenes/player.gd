@@ -64,3 +64,7 @@ func top_collision():
 	if self.position.y < 0:
 		GameManager.cat_falling = true
 	
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	GameManager.game_ends()

@@ -35,3 +35,7 @@ animation = &"cat"
 position = Vector2(-1.5, -1)
 scale = Vector2(0.136184, 0.136184)
 shape = SubResource("RectangleShape2D_mu4dd")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
