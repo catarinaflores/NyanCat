@@ -1,11 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://58x4vtu8wkkg"]
+[gd_scene load_steps=3 format=3 uid="uid://s847y23daw5e"]
 
 [ext_resource type="FontFile" uid="uid://dv2sh58ppyyjl" path="res://assets/Silkscreen_font/Silkscreen-Bold.ttf" id="1_hgty8"]
-[ext_resource type="Script" path="res://scenes/hud.gd" id="1_lctcc"]
+
+[sub_resource type="GDScript" id="GDScript_5sc12"]
+script/source = "extends Node
+
+@onready var score_label = %ScoreLabel
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	score_label.text = str(GameManager.score)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_lctcc")
+script = SubResource("GDScript_5sc12")
 
 [node name="ScoreLabel" type="Label" parent="."]
 unique_name_in_owner = true

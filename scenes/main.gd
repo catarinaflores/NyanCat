@@ -24,8 +24,7 @@ func _ready():
 		# obstacle.global_position.x -= scroll_speed * delta
 
 func new_game() -> void:
-	GameManager.game_running = true
-	GameManager.game_over = false
+	get_tree().paused = false
 	GameManager.score = 0
 	generate_rainbows()
 	cat.reset()
@@ -37,7 +36,7 @@ func _on_rainbow_timer_timeout():
 
 
 func generate_rainbows() -> void:
-	var obstacle = rainbows_scene.instantiate()
+	var obstacle = rainbow_scene.instantiate()
 	obstacle.global_position.x = screen_size.x + RAINBOW_DELAY
 	obstacle.global_position.y = screen_size.y / 2 + randi_range(-RAINBOW_RANGE, RAINBOW_RANGE)
 	add_child(obstacle)
@@ -49,8 +48,7 @@ func generate_rainbows() -> void:
 func stop_game(delta) -> void:
 	rainbow_timer.stop()
 	cat.stop(delta)
-	GameManager.game_over = true
-	GameManager.game_running = false
+
 
 
 func cat_hit(delta) -> void:
