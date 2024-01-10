@@ -16,7 +16,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	top_collision()
+	# top_collision()
 	if GameManager.cat_falling == false:
 		if Input.is_action_just_pressed("fly"):
 			fly()
@@ -28,9 +28,8 @@ func _physics_process(delta):
 		move_and_collide(velocity * delta)
 		
 		rotate_cat()
-	else:
-		stop(delta)
-
+	# else:
+		# stop(delta)
 
 
 func reset():
@@ -53,18 +52,26 @@ func rotate_cat():
 		rotation -= cat_rotation * deg_to_rad(1)
 
 
-func stop(delta):
-	velocity.y += gravity * delta
-	move_and_collide(velocity * delta)
-	rotate_cat()
-	set_process_input(false)
-
-
-func top_collision():
-	if self.position.y < 0:
-		GameManager.cat_falling = true
-	
-
-
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	GameManager.game_ends()
+
+
+
+
+
+# checks if cat is going past the top of the screen
+# func top_collision():
+	# if self.position.y < 0:
+		# GameManager.cat_falling = true
+
+
+# player can no longer control cat and it falls
+# func stop(delta):
+	# velocity.y += gravity * delta
+	# move_and_collide(velocity * delta)
+	# rotate_cat()
+	# set_process_input(false)
+
+
+
+
