@@ -1,11 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://ryrpmj54sows"]
+[gd_scene load_steps=5 format=3 uid="uid://ryrpmj54sows"]
 
-[ext_resource type="Script" path="res://game_manager.gd" id="1_3fnax"]
+[ext_resource type="Script" path="res://scenes/hud.gd" id="1_gtc0j"]
 [ext_resource type="Texture2D" uid="uid://bblcu7cc3jfpp" path="res://assets/background.jpg" id="1_i7j24"]
+[ext_resource type="PackedScene" uid="uid://58x4vtu8wkkg" path="res://scenes/hud.tscn" id="2_mynse"]
 [ext_resource type="PackedScene" uid="uid://d3rqu2ojdopxn" path="res://scenes/player.tscn" id="2_u6ihe"]
 
 [node name="Main" type="Node"]
-script = ExtResource("1_3fnax")
+script = ExtResource("1_gtc0j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(352, 504.5)
@@ -19,6 +20,6 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 wait_time = 1.5
 
-[connection signal="hit" from="." to="." method="_on_hit"]
-[connection signal="scored" from="." to="." method="_on_scored"]
+[node name="HUD" parent="." instance=ExtResource("2_mynse")]
+
 [connection signal="timeout" from="RainbowTimer" to="." method="_on_rainbow_timer_timeout"]

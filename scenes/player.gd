@@ -37,6 +37,7 @@ func reset() -> void:
 	velocity = Vector2.ZERO
 	position = START_POS
 	set_rotation(0)
+	set_process_input(true)
 
 
 func fly() -> void:

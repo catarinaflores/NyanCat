@@ -11,7 +11,7 @@ signal scored
 
 
 func game_ends():
-	get_tree().paused
+	get_tree().paused = true
 
 
 func _on_hit():
