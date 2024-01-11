@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d = %AnimatedSprite2D
 
-@export var gravity = 1000
 @export var fly_force = -300
 @export var falling_speed = 400
 
@@ -17,11 +16,11 @@ func _ready():
 
 func _physics_process(delta):
 	# top_collision()
-	if GameManager.cat_falling == false:
+	# if GameManager.cat_falling == false:
 		if Input.is_action_just_pressed("fly"):
 			fly()
 		
-		velocity.y += gravity * delta
+		velocity.y += GameManager.gravity * delta
 		if velocity.y > falling_speed:
 			velocity.y = falling_speed
 		
@@ -36,7 +35,6 @@ func reset():
 	velocity = Vector2.ZERO
 	position = START_POS
 	set_rotation(0)
-	set_process_input(true)
 
 
 func fly():
@@ -53,6 +51,7 @@ func rotate_cat():
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	GameManager.hit.emit()
 	GameManager.game_ends()
 
 

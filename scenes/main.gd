@@ -13,6 +13,9 @@ var rainbow_scene = preload("res://scenes/rainbows.tscn")
 @onready var rainbow_timer = %RainbowTimer
 @onready var nyan_cat_music = %NyanCatMusic
 @onready var instructions = %Instructions
+@onready var score_label = %ScoreLabel
+@onready var scored_sound = %ScoredSound
+@onready var game_over_menu = %GameOverMenu
 
 
 
@@ -22,14 +25,18 @@ func _ready():
 	nyan_cat_music.play()
 	await get_tree().create_timer(3).timeout
 	instructions.hide()
+	score_label.show()
 	new_game()
+	GameManager.hit.connect(rainbow_hit)
+	GameManager.scored.connect(scored)
 
-# func _process(delta):
-	# for obstacle in rainbow_row:
-		# obstacle.global_position.x -= scroll_speed * delta
+func _process(_delta):
+	score_label.text = str(GameManager.score)
+
 
 func new_game() -> void:
 	get_tree().paused = false
+	cat.show()
 	GameManager.score = 0
 	generate_rainbows()
 	cat.reset()
@@ -50,11 +57,30 @@ func generate_rainbows() -> void:
 		queue_free()
 
 
-func stop_game(delta) -> void:
-	rainbow_timer.stop()
-	cat.stop(delta)
+func rainbow_hit():
+	cat.fly_force = GameManager.gravity
+	await get_tree().create_timer(3).timeout
+	game_over_menu.show()
+	score_label.hide()
+	if GameManager.score > SaveSystem.data.highscore:
+		SaveSystem.data.highscore = GameManager.score
+		SaveSystem.save_data()
+	
+
+func scored():
+	GameManager.score += 1
+	scored_sound.play()
+	
 
 
 
-func cat_hit(delta) -> void:
-	stop_game(delta)
+
+
+# func stop_game(delta) -> void:
+	# rainbow_timer.stop()
+	# cat.stop(delta)
+
+
+
+# func cat_hit(delta) -> void:
+	# stop_game(delta)

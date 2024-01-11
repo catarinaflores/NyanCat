@@ -1,10 +1,10 @@
 extends Control
 
+@onready var all_scores = %AllScores
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
+func _process(delta):
+	all_scores.text = "Your Score \n" + str(GameManager.score) + " \n " + "High Score \n" + str(SaveSystem.data.highscore)
 
 
 func _on_start_button_pressed():
