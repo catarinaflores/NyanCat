@@ -57,7 +57,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 
 
-
 # checks if cat is going past the top of the screen
 # func top_collision():
 	# if self.position.y < 0:
