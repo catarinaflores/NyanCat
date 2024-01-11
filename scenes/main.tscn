@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ryrpmj54sows"]
+[gd_scene load_steps=6 format=3 uid="uid://ryrpmj54sows"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_2h23f"]
 [ext_resource type="Texture2D" uid="uid://bblcu7cc3jfpp" path="res://assets/background.jpg" id="1_i7j24"]
 [ext_resource type="PackedScene" uid="uid://d3rqu2ojdopxn" path="res://scenes/player.tscn" id="2_u6ihe"]
+[ext_resource type="AudioStream" uid="uid://bdsw111bnbgwe" path="res://assets/Nyan Cat! [Official].mp3" id="4_54o03"]
+[ext_resource type="FontFile" uid="uid://dv2sh58ppyyjl" path="res://assets/Silkscreen_font/Silkscreen-Bold.ttf" id="5_sk14h"]
 
 [node name="Main" type="Node"]
+process_mode = 3
 script = ExtResource("1_2h23f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -18,5 +21,25 @@ unique_name_in_owner = true
 [node name="RainbowTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 1.5
+
+[node name="NyanCatMusic" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_54o03")
+
+[node name="Instructions" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -181.0
+offset_top = 57.0
+offset_right = 182.0
+offset_bottom = 101.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_sk14h")
+theme_override_font_sizes/font_size = 20
+text = "Use \"Space\" Key to Jump"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="RainbowTimer" to="." method="_on_rainbow_timer_timeout"]

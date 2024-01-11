@@ -6,17 +6,22 @@ extends Node
 
 var screen_size: Vector2
 var rainbow_row: Array
-const RAINBOW_DELAY = 1000
+const RAINBOW_DELAY = 600
 const RAINBOW_RANGE = 300
 var rainbow_scene = preload("res://scenes/rainbows.tscn")
 @onready var cat = %Player
 @onready var rainbow_timer = %RainbowTimer
+@onready var nyan_cat_music = %NyanCatMusic
+@onready var instructions = %Instructions
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_window().size
+	nyan_cat_music.play()
+	await get_tree().create_timer(3).timeout
+	instructions.hide()
 	new_game()
 
 # func _process(delta):
@@ -53,4 +58,3 @@ func stop_game(delta) -> void:
 
 func cat_hit(delta) -> void:
 	stop_game(delta)
-
