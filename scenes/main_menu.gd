@@ -3,7 +3,7 @@ extends Control
 @onready var all_scores = %AllScores
 
 
-func _process(delta):
+func _process(_delta):
 	all_scores.text = "High Score \n" + str(SaveSystem.data.highscore)
 
 

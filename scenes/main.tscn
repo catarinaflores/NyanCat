@@ -22,22 +22,6 @@ texture = ExtResource("1_i7j24")
 unique_name_in_owner = true
 visible = false
 
-[node name="ScoreLabel" type="Label" parent="."]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -159.5
-offset_right = 159.5
-offset_bottom = 153.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("6_g08ns")
-theme_override_font_sizes/font_size = 100
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="RainbowTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 1.5
@@ -65,6 +49,22 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_sk14h")
 theme_override_font_sizes/font_size = 20
 text = "Use \"Space\" Key to Jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -159.5
+offset_right = 159.5
+offset_bottom = 153.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_g08ns")
+theme_override_font_sizes/font_size = 100
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 

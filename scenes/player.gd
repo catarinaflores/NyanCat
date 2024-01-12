@@ -15,18 +15,17 @@ func _ready():
 
 
 func _physics_process(delta):
-	# top_collision()
-	# if GameManager.cat_falling == false:
-		if Input.is_action_just_pressed("fly"):
-			fly()
+
+	if Input.is_action_just_pressed("fly"):
+		fly()
 		
-		velocity.y += GameManager.gravity * delta
-		if velocity.y > falling_speed:
-			velocity.y = falling_speed
+	velocity.y += GameManager.gravity * delta
+	if velocity.y > falling_speed:
+		velocity.y = falling_speed
 		
-		move_and_collide(velocity * delta)
+	move_and_collide(velocity * delta)
 		
-		rotate_cat()
+	rotate_cat()
 	# else:
 		# stop(delta)
 
