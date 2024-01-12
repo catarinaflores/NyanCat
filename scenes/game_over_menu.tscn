@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cv4ady7qrv6ah"]
+[gd_scene load_steps=6 format=3 uid="uid://cv4ady7qrv6ah"]
 
 [ext_resource type="Script" path="res://scenes/game_over_menu.gd" id="1_gui2b"]
 [ext_resource type="FontFile" uid="uid://dv2sh58ppyyjl" path="res://assets/Silkscreen_font/Silkscreen-Bold.ttf" id="1_iqudx"]
 [ext_resource type="FontFile" uid="uid://caxm1unyobvk7" path="res://assets/Silkscreen_font/Silkscreen-Regular.ttf" id="2_y2koj"]
 [ext_resource type="Texture2D" uid="uid://cluq6rkcphemi" path="res://assets/cat_cry.png" id="3_tdelk"]
+[ext_resource type="AudioStream" uid="uid://dbncq6v6vhhfr" path="res://assets/cat-meow.mp3" id="5_cs5bg"]
 
 [node name="GameOverMenu" type="CanvasLayer"]
 script = ExtResource("1_gui2b")
@@ -64,6 +65,11 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y2koj")
 theme_override_font_sizes/font_size = 40
 text = "Quit"
+
+[node name="ClickedSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_cs5bg")
+volume_db = -15.0
 
 [connection signal="pressed" from="VBoxContainer/ReplayButton" to="." method="_on_replay_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
