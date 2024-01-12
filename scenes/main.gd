@@ -36,8 +36,8 @@ func _process(_delta):
 
 
 func new_game() -> void:
-	get_tree().paused = false
 	cat.show()
+	GameManager.game_over = false
 	GameManager.score = 0
 	generate_rainbows()
 	cat.reset()

@@ -1,8 +1,8 @@
 extends Node
 
 var score = 0
-var speed = 400
 var gravity = 1000
+var game_over: bool = false
 
 #var cat_falling: bool = false
 
@@ -11,4 +11,4 @@ signal scored
 
 
 func game_ends():
-	speed = 0
+	game_over = true
