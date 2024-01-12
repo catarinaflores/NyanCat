@@ -24,6 +24,7 @@ SaveSystem="*res://globals/save_system.gd"
 
 window/size/viewport_width=800
 window/size/viewport_height=1000
+window/size/resizable=false
 window/stretch/mode="viewport"
 
 [input]
