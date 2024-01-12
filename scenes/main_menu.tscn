@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbgv38mgnducb"]
+[gd_scene load_steps=8 format=3 uid="uid://bbgv38mgnducb"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_d13el"]
 [ext_resource type="Texture2D" uid="uid://bblcu7cc3jfpp" path="res://assets/background.jpg" id="1_uanw0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://qdppwvgaj3in" path="res://assets/cat.png" id="3_7x65i"]
 [ext_resource type="FontFile" uid="uid://dv2sh58ppyyjl" path="res://assets/Silkscreen_font/Silkscreen-Bold.ttf" id="4_tuiyq"]
 [ext_resource type="FontFile" uid="uid://caxm1unyobvk7" path="res://assets/Silkscreen_font/Silkscreen-Regular.ttf" id="5_mk8mx"]
+[ext_resource type="AudioStream" uid="uid://dbncq6v6vhhfr" path="res://assets/cat-meow.mp3" id="7_mwi83"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -120,6 +121,10 @@ size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("4_tuiyq")
 theme_override_font_sizes/font_size = 50
 text = "Quit"
+
+[node name="CatSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_mwi83")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

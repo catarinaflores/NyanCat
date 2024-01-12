@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ryrpmj54sows"]
+[gd_scene load_steps=10 format=3 uid="uid://ryrpmj54sows"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_2h23f"]
 [ext_resource type="Texture2D" uid="uid://bblcu7cc3jfpp" path="res://assets/background.jpg" id="1_i7j24"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://dv2sh58ppyyjl" path="res://assets/Silkscreen_font/Silkscreen-Bold.ttf" id="5_sk14h"]
 [ext_resource type="FontFile" uid="uid://caxm1unyobvk7" path="res://assets/Silkscreen_font/Silkscreen-Regular.ttf" id="6_g08ns"]
 [ext_resource type="PackedScene" uid="uid://cv4ady7qrv6ah" path="res://scenes/game_over_menu.tscn" id="8_ooarq"]
+[ext_resource type="AudioStream" uid="uid://ti8jwb0j6cqj" path="res://assets/angry-cat-meow.mp3" id="9_bpknn"]
 
 [node name="Main" type="Node"]
 process_mode = 3
@@ -30,6 +31,7 @@ wait_time = 1.5
 unique_name_in_owner = true
 stream = ExtResource("4_54o03")
 volume_db = -30.0
+autoplay = true
 
 [node name="ScoredSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
@@ -71,5 +73,10 @@ vertical_alignment = 1
 [node name="GameOverMenu" parent="." instance=ExtResource("8_ooarq")]
 unique_name_in_owner = true
 visible = false
+
+[node name="LostSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_bpknn")
+volume_db = -20.0
 
 [connection signal="timeout" from="RainbowTimer" to="." method="_on_rainbow_timer_timeout"]

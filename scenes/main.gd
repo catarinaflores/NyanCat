@@ -16,6 +16,7 @@ var rainbow_scene = preload("res://scenes/rainbows.tscn")
 @onready var score_label = %ScoreLabel
 @onready var scored_sound = %ScoredSound
 @onready var game_over_menu = %GameOverMenu
+@onready var lost_sound = %LostSound
 
 
 
@@ -58,6 +59,8 @@ func generate_rainbows() -> void:
 
 
 func rainbow_hit():
+	lost_sound.play()
+	nyan_cat_music.stop()
 	cat.fly_force = GameManager.gravity
 	await get_tree().create_timer(3).timeout
 	game_over_menu.show()
