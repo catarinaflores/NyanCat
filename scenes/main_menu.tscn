@@ -127,6 +127,7 @@ text = "Quit"
 [node name="ClickedSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("7_mwi83")
+volume_db = -15.0
 
 [node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
